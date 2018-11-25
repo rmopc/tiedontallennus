@@ -11,13 +11,24 @@ namespace tiedonTallennus
     {
         static void Main(string[] args)
         {
+            string tiedosto = @"C:\Temp\Lampotila.txt";
+            //luetaan tiedostosta aiemmin asetettu lämpötila
+            if (File.Exists(tiedosto))
+            {
+                string aiempiArvo = File.ReadAllText(tiedosto);
+                Console.WriteLine("Aiemmin asetettu lämpötila on " + aiempiArvo + " astetta.");
+            }
+            else
+            {
+                Console.WriteLine("Terve ja moro!");
+            }
+
             int lampotila = 0;
             Console.Write ("Anna uusi lämpötila: ");
             string syote = Console.ReadLine();
             lampotila = int.Parse(syote);
 
             // tiedostoon kijroittaminen
-            string tiedosto = @"C:\Temp\Lampotila.txt";
             File.WriteAllText(tiedosto, lampotila.ToString());
             Console.WriteLine("Uusi lämpötila tallennettu!");
 
